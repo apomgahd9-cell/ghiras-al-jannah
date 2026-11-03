@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    direction: rtl;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply font-arabic bg-forest-950 text-cream-50 antialiased;
+    margin: 0;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at top, rgba(6, 95, 70, 0.15), transparent 60%),
+      radial-gradient(ellipse at bottom, rgba(20, 83, 45, 0.1), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-forest-900/70 rounded-2xl border border-emerald-800/30 shadow-lg shadow-black/20 backdrop-blur-sm;
+  }
+
+  .card-elevated {
+    @apply bg-gradient-to-br from-forest-900 to-forest-950 rounded-2xl border border-emerald-700/25 shadow-xl shadow-black/30;
+  }
+
+  .card-gold {
+    @apply bg-gradient-to-br from-forest-900 via-forest-950 to-forest-900 rounded-2xl border border-gold-600/25 shadow-xl shadow-black/30;
+  }
+
+  .btn-primary {
+    @apply bg-emerald-600 hover:bg-emerald-500 active:bg-emerald-700 text-cream-50 font-medium rounded-xl px-5 py-3 transition-all duration-200 shadow-lg shadow-emerald-900/30;
+  }
+
+  .btn-gold {
+    @apply bg-gradient-to-l from-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 active:from-gold-600 active:to-gold-700 text-forest-950 font-bold rounded-xl px-5 py-3 transition-all duration-200 shadow-lg shadow-gold-900/30;
+  }
+
+  .btn-ghost {
+    @apply bg-forest-800/50 hover:bg-forest-800/80 active:bg-forest-700 text-cream-100 font-medium rounded-xl px-4 py-2.5 transition-colors duration-200 border border-emerald-800/20;
+  }
+
+  .btn-outline-gold {
+    @apply border border-gold-600/40 hover:border-gold-500/60 hover:bg-gold-600/10 text-gold-300 font-medium rounded-xl px-4 py-2.5 transition-all duration-200;
+  }
+
+  .section-title {
+    @apply font-arabic font-bold text-lg text-gold-300;
+  }
+
+  .text-tashkeel {
+    @apply font-quran leading-loose;
+  }
+
+  .label-tag {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full;
+  }
+
+  .label-sahih {
+    @apply label-tag bg-emerald-900/50 text-emerald-300 border border-emerald-700/30;
+  }
+
+  .label-hasan {
+    @apply label-tag bg-emerald-900/40 text-emerald-200/80 border border-emerald-700/20;
+  }
+
+  .label-general {
+    @apply label-tag bg-gold-900/30 text-gold-300/80 border border-gold-700/20;
+  }
+
+  .gradient-text-gold {
+    @apply bg-gradient-to-l from-gold-300 to-gold-500 bg-clip-text text-transparent;
+  }
+
+  .ornamental-divider {
+    @apply flex items-center gap-3 text-gold-600/40;
+  }
+
+  .ornamental-divider::before,
+  .ornamental-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-gradient-to-l from-transparent via-gold-600/30 to-transparent;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
