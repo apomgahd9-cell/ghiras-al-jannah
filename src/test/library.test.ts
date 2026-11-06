@@ -852,4 +852,124 @@ describe('Independent review corrections', () => {
     expect(s!.note).toContain('فضل');
     expect(s!.note).toContain('الصيغة');
   });
+
+  // === تصحيحات الجولة الرابعة ===
+
+  it('salat-nabi-10 uses both muslim-408 and bukhari-3370', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'salat-nabi-10');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).toContain('muslim-408');
+    expect(d!.sourceIds).toContain('bukhari-3370');
+  });
+
+  it('bukhari-3370 source exists with correct narrator (Kaab ibn Ujrah)', () => {
+    const s = SOURCE_MAP['bukhari-3370'];
+    expect(s).toBeDefined();
+    expect(s!.narrator).toContain('كعب بن عجرة');
+    expect(s!.sourceType).toBe('hadith');
+    expect(s!.bookName).toBe('صحيح البخاري');
+  });
+
+  it('bukhari-3370 hadithText contains full Ibrahimiyah formula', () => {
+    const s = SOURCE_MAP['bukhari-3370'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ');
+    expect(s!.hadithText).toContain('كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ');
+    expect(s!.hadithText).toContain('اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ');
+  });
+
+  it('muslim-408 note references bukhari-3370 as source for the formula', () => {
+    const s = SOURCE_MAP['muslim-408'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('3370');
+  });
+
+  it('salat-nabi-10 explanation mentions Ibrahimiyah or bukhari', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'salat-nabi-10');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('الإبراهيمية');
+  });
+
+  it('quran-fatiha uses both bukhari-4474 and quran-fatiha-1-7', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'quran-fatiha');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).toContain('bukhari-4474');
+    expect(d!.sourceIds).toContain('quran-fatiha-1-7');
+  });
+
+  it('quran-fatiha-1-7 source exists as quran type with correct surah', () => {
+    const s = SOURCE_MAP['quran-fatiha-1-7'];
+    expect(s).toBeDefined();
+    expect(s!.sourceType).toBe('quran');
+    expect(s!.surahName).toBe('الفاتحة');
+    expect(s!.verseNumber).toBe('1-7');
+  });
+
+  it('quran-fatiha-1-7 hadithText matches the surah text in the dhikr', () => {
+    const s = SOURCE_MAP['quran-fatiha-1-7'];
+    const d = DHIKR_LIST.find((x) => x.id === 'quran-fatiha');
+    expect(s).toBeDefined();
+    expect(d).toBeDefined();
+    expect(s!.hadithText).toContain('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ');
+    expect(s!.hadithText).toContain('الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ');
+    expect(s!.hadithText).toContain('مَالِكِ يَوْمِ الدِّينِ');
+    expect(s!.hadithText).toContain('إِيَّاكَ نَعْبُدُ');
+    expect(s!.hadithText).toContain('الصِّرَاطَ الْمُسْتَقِيمَ');
+    expect(s!.hadithText).toContain('وَلَا الضَّالِّينَ');
+  });
+
+  it('bukhari-4474 note clarifies it is for virtue not text', () => {
+    const s = SOURCE_MAP['bukhari-4474'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('فضل');
+    expect(s!.note).toContain('ليس مصدرًا');
+  });
+
+  it('muslim-2557b note says 2557a and 2557b are similar not identical', () => {
+    const s = SOURCE_MAP['muslim-2557b'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('متقاربة');
+    expect(s!.note).toContain('ليستا متطابقتين');
+  });
+
+  it('muslim-533a note mentions variant wordings', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('يبتغي به وجه الله');
+    expect(s!.note).toContain('اختلاف');
+  });
+
+  it('bukhari-6406 hadithText has correct order: Azim first then wa-bihamdihi', () => {
+    const s = SOURCE_MAP['bukhari-6406'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toBeDefined();
+    const text = s!.hadithText!;
+    const azimIdx = text.indexOf('سُبْحَانَ اللَّهِ الْعَظِيمِ');
+    const bihamdihIdx = text.indexOf('سُبْحَانَ اللَّهِ وَبِحَمْدِهِ');
+    expect(azimIdx).toBeGreaterThan(-1);
+    expect(bihamdihIdx).toBeGreaterThan(-1);
+    expect(azimIdx).toBeLessThan(bihamdihIdx);
+  });
+
+  it('bukhari-6406 note clarifies virtue applies to both phrases together', () => {
+    const s = SOURCE_MAP['bukhari-6406'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('معًا');
+  });
+
+  it('subhan-allah-azim-100 virtue matches bukhari-6406 order', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-100');
+    expect(d).toBeDefined();
+    expect(d!.virtue).toContain('سبحان الله العظيم');
+    const azimIdx = d!.virtue.indexOf('سبحان الله العظيم');
+    const bihamdihIdx = d!.virtue.indexOf('سبحان الله وبحمده');
+    expect(azimIdx).toBeGreaterThan(-1);
+    expect(bihamdihIdx).toBeGreaterThan(-1);
+    expect(azimIdx).toBeLessThan(bihamdihIdx);
+  });
 });

@@ -27,7 +27,7 @@ export const DHIKR_LIST: Dhikr[] = [
     explanation:
       'تنزيه الله تعالى عن كل نقص مع وصفه بالعظمة. كلمتان خفيفتان على اللسان، ثقيلتان في الميزان.',
     virtue:
-      'كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله وبحمده، سبحان الله العظيم.',
+      'كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن: سبحان الله العظيم، سبحان الله وبحمده. الفضل يعم اللفظتين معًا.',
     virtueType: 'established',
     sourceIds: ['bukhari-6406'],
     category: 'tasbih_tahmid',
@@ -178,11 +178,11 @@ export const DHIKR_LIST: Dhikr[] = [
     arabicText: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد',
     tashkeelText: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّد',
     explanation:
-      'الصلاة على النبي ﷺ من أعظم القربات. من صلى على النبي صلاة صلى الله عليه بها عشرًا.',
+      'الصلاة على النبي ﷺ من أعظم القربات. الصيغة المعروضة مقتطف من الصلاة الإبراهيمية الواردة في حديث كعب بن عجرة في صحيح البخاري. من صلى على النبي صلاة صلى الله عليه بها عشرًا.',
     virtue:
       'من صلى عليَّ صلاة صلى الله عليه بها عشرًا.',
     virtueType: 'established',
-    sourceIds: ['muslim-408'],
+    sourceIds: ['muslim-408', 'bukhari-3370'],
     category: 'salat_nabi',
     published: true,
     status: 'verified',
@@ -352,7 +352,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'قال النبي ﷺ: هي السبع المثاني والقرآن العظيم الذي أوتيته.',
     virtueType: 'established',
-    sourceIds: ['bukhari-4474'],
+    sourceIds: ['bukhari-4474', 'quran-fatiha-1-7'],
     category: 'quran',
     published: true,
     status: 'verified',
