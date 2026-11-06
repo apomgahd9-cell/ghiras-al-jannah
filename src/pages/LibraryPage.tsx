@@ -198,8 +198,8 @@ export function LibraryPage({ onSelectDhikr }: LibraryPageProps) {
                       <span className={getStatusCssClass(dhikr.status)}>
                         {getStatusLabel(dhikr.status)}
                       </span>
-                      <span className={getGradeCssClass(primaryGrade)}>
-                        {getGradeLabel(primaryGrade)}
+                      <span className={sources[0].sourceType === 'quran' ? 'label-tag bg-gold-900/30 text-gold-300/80 border border-gold-700/20' : getGradeCssClass(primaryGrade)}>
+                        {sources[0].sourceType === 'quran' ? 'قرآن' : getGradeLabel(primaryGrade)}
                       </span>
                       {dhikr.recommendedCount !== undefined && (
                         <span className="text-[10px] text-gold-300/60 bg-gold-900/20 px-2 py-0.5 rounded-full">

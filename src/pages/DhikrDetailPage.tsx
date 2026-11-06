@@ -154,8 +154,8 @@ export function DhikrDetailPage({ dhikrId, onBack, onNavigate }: DhikrDetailPage
                     {source.bookName}
                   </span>
                 </div>
-                <span className={getGradeCssClass(source.grade)}>
-                  {getGradeLabel(source.grade)}
+                <span className={source.sourceType === 'quran' ? 'label-tag bg-gold-900/30 text-gold-300/80 border border-gold-700/20' : getGradeCssClass(source.grade)}>
+                  {source.sourceType === 'quran' ? 'قرآن' : getGradeLabel(source.grade)}
                 </span>
               </div>
               <div className="space-y-1.5 text-xs text-cream-200/60 pr-7">
@@ -166,7 +166,7 @@ export function DhikrDetailPage({ dhikrId, onBack, onNavigate }: DhikrDetailPage
                   <p>سورة {source.surahName} — الآية {source.verseNumber}</p>
                 )}
                 {source.narrator && <p>الراوي: {source.narrator}</p>}
-                {source.gradingRef && (
+                {source.sourceType === 'hadith' && source.gradingRef && (
                   <p className="text-emerald-300/50">مرجع التقييم: {source.gradingRef}</p>
                 )}
                 {source.hadithText && (

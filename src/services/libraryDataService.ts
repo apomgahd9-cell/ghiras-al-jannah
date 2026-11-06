@@ -3,8 +3,23 @@ import { SOURCES, SOURCE_MAP } from '@/data/sources';
 import { CATEGORIES, CATEGORY_MAP } from '@/data/categories';
 import type { Dhikr, Source, Category, HadithGrade, DhikrStatus } from '@/types';
 
+const DISALLOWED_GRADES: HadithGrade[] = ['daif', 'maudu', 'needs_review'];
+const DISALLOWED_STATUSES: DhikrStatus[] = ['needs_review', 'weak', 'disputed'];
+
+function isDhikrPublishable(d: Dhikr): boolean {
+  if (!d.published) return false;
+  if (d.status !== 'verified') return false;
+  if (d.sourceIds.length === 0) return false;
+  for (const sid of d.sourceIds) {
+    const source = SOURCE_MAP[sid];
+    if (!source) return false;
+    if (DISALLOWED_GRADES.includes(source.grade)) return false;
+  }
+  return true;
+}
+
 export function getAllDhikr(): Dhikr[] {
-  return DHIKR_LIST.filter((d) => d.published);
+  return DHIKR_LIST.filter(isDhikrPublishable);
 }
 
 export function getAllDhikrIncludingUnpublished(): Dhikr[] {
@@ -13,7 +28,8 @@ export function getAllDhikrIncludingUnpublished(): Dhikr[] {
 
 export function getDhikrById(id: string): Dhikr | undefined {
   const dhikr = DHIKR_MAP[id];
-  return dhikr?.published ? dhikr : undefined;
+  if (!dhikr || !isDhikrPublishable(dhikr)) return undefined;
+  return dhikr;
 }
 
 export function getAllSources(): Source[] {
@@ -122,3 +138,9 @@ export function getDhikrByStatus(status: DhikrStatus): Dhikr[] {
 export function getVerifiedDhikr(): Dhikr[] {
   return getAllDhikr().filter((d) => d.status === 'verified');
 }
+
+export function isDhikrEligibleForPublish(d: Dhikr): boolean {
+  return isDhikrPublishable(d);
+}
+
+export { DISALLOWED_GRADES, DISALLOWED_STATUSES };
