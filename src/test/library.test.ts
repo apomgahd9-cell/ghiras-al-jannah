@@ -611,6 +611,120 @@ describe('Salat-nabi-morning-evening needs review', () => {
   });
 });
 
+describe('Allahu-akbar source-mismatch fix', () => {
+  it('allahu-akbar does not reference muslim-223', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'allahu-akbar');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).not.toContain('muslim-223');
+  });
+
+  it('allahu-akbar is not published', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'allahu-akbar');
+    expect(d).toBeDefined();
+    expect(d!.published).toBe(false);
+    expect(d!.status).toBe('needs_review');
+  });
+
+  it('allahu-akbar is not shown to user', () => {
+    const shown = getAllDhikr().find((x) => x.id === 'allahu-akbar');
+    expect(shown).toBeUndefined();
+  });
+
+  it('allahu-akbar virtue does not claim established virtue', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'allahu-akbar');
+    expect(d).toBeDefined();
+    expect(d!.virtueType).not.toBe('established');
+  });
+});
+
+describe('Subhan-allah-azim-jannah disputed status', () => {
+  it('subhan-allah-azim-jannah has status disputed', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(d).toBeDefined();
+    expect(d!.status).toBe('disputed');
+  });
+
+  it('subhan-allah-azim-jannah is not published', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(d).toBeDefined();
+    expect(d!.published).toBe(false);
+  });
+
+  it('subhan-allah-azim-jannah is not shown to user', () => {
+    const shown = getAllDhikr().find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(shown).toBeUndefined();
+  });
+
+  it('subhan-allah-azim-jannah statusNote mentions scholarly disagreement', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(d).toBeDefined();
+    expect(d!.statusNote).toBeDefined();
+    expect(d!.statusNote!.length).toBeGreaterThan(10);
+  });
+
+  it('subhan-allah-azim-jannah virtueType is not established', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(d).toBeDefined();
+    expect(d!.virtueType).not.toBe('established');
+  });
+});
+
+describe('Source-dhikr text alignment', () => {
+  const STOP_WORDS = new Set([
+    'الله', 'اللهم', 'الذي', 'التي', 'الذين', 'على', 'عليه', 'عليها',
+    'من', 'في', 'إلا', 'إن', 'أن', 'هو', 'هي', 'قال', 'قيل', 'ما', 'لا',
+    'إلى', 'عن', 'مع', 'هذا', 'هذه', 'ذلك', 'الذي', 'كان', 'كانت',
+  ]);
+
+  function normalizeArabic(text: string): string {
+    return text
+      .replace(/[\u064B-\u065F\u0670\u0640]/g, '')
+      .replace(/[^\u0621-\u064A\s]/g, ' ');
+  }
+
+  function significantWords(text: string, minLen: number): string[] {
+    return normalizeArabic(text)
+      .split(/\s+/)
+      .filter((w) => w.length >= minLen && !STOP_WORDS.has(w));
+  }
+
+  it('no published dhikr has a hadith source whose text shares zero significant words with the dhikr virtue', () => {
+    for (const d of getAllDhikr()) {
+      const hadithSources = getSourcesForDhikr(d).filter(
+        (s) => s.sourceType === 'hadith' && s.hadithText
+      );
+      if (hadithSources.length === 0) continue;
+      const virtueWords = significantWords(d.virtue, 3);
+      for (const source of hadithSources) {
+        const sourceNorm = normalizeArabic(source.hadithText!);
+        const shared = virtueWords.filter((w) => sourceNorm.includes(w));
+        expect(shared.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it('allahu-akbar has no sourceIds (removed mismatched source)', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'allahu-akbar');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds.length).toBe(0);
+  });
+
+  it('every published dhikr with hadith sources has at least one source sharing a significant word with its virtue text', () => {
+    for (const d of getAllDhikr()) {
+      const hadithSources = getSourcesForDhikr(d).filter(
+        (s) => s.sourceType === 'hadith' && s.hadithText
+      );
+      if (hadithSources.length === 0) continue;
+      const virtueWords = significantWords(d.virtue, 4);
+      const allSourceText = hadithSources
+        .map((s) => normalizeArabic(s.hadithText!))
+        .join(' ');
+      const found = virtueWords.some((w) => allSourceText.includes(w));
+      expect(found).toBe(true);
+    }
+  });
+});
+
 describe('Astaghfirullah-100 needs review', () => {
   it('astaghfirullah-100 is needs_review due to formula mismatch', () => {
     const d = DHIKR_LIST.find((x) => x.id === 'astaghfirullah-100');
