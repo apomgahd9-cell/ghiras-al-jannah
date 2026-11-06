@@ -740,26 +740,41 @@ describe('Astaghfirullah-100 needs review', () => {
 });
 
 describe('Independent review corrections', () => {
-  it('rahim-tasil-rahim uses muslim-2557a not muslim-2558', () => {
+  it('rahim-tasil-rahim uses muslim-2557b not muslim-2558 or 2557a', () => {
     const d = DHIKR_LIST.find((x) => x.id === 'rahim-tasil-rahim');
     expect(d).toBeDefined();
-    expect(d!.sourceIds).toContain('muslim-2557a');
+    expect(d!.sourceIds).toContain('muslim-2557b');
     expect(d!.sourceIds).not.toContain('muslim-2558');
+    expect(d!.sourceIds).not.toContain('muslim-2557a');
   });
 
-  it('muslim-2557a source has correct narrator (Anas ibn Malik)', () => {
-    const s = SOURCE_MAP['muslim-2557a'];
+  it('muslim-2557b source has correct narrator (Anas ibn Malik)', () => {
+    const s = SOURCE_MAP['muslim-2557b'];
     expect(s).toBeDefined();
     expect(s!.narrator).toContain('أنس بن مالك');
     expect(s!.narrator).not.toContain('أبو هريرة');
   });
 
-  it('muslim-2557a note mentions Anas ibn Malik and 2557b', () => {
-    const s = SOURCE_MAP['muslim-2557a'];
+  it('muslim-2557b note mentions Anas ibn Malik and 2557a', () => {
+    const s = SOURCE_MAP['muslim-2557b'];
     expect(s).toBeDefined();
     expect(s!.note).toBeDefined();
     expect(s!.note).toContain('أنس بن مالك');
-    expect(s!.note).toContain('2557b');
+    expect(s!.note).toContain('2557a');
+  });
+
+  it('muslim-2557b note does not claim 2558 is the same hadith', () => {
+    const s = SOURCE_MAP['muslim-2557b'];
+    expect(s).toBeDefined();
+    if (s!.note) {
+      expect(s!.note).not.toContain('2558');
+    }
+  });
+
+  it('no dhikr references muslim-2557a (replaced by 2557b)', () => {
+    for (const d of DHIKR_LIST) {
+      expect(d.sourceIds).not.toContain('muslim-2557a');
+    }
   });
 
   it('sadaqah-nafs uses muslim-533a not muslim-1027 or 533c', () => {

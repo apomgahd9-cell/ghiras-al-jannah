@@ -422,7 +422,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من أحب أن يُبسط له في رزقه وأن يُنسأ له في أثره فليصل رحمه.',
     virtueType: 'established',
-    sourceIds: ['bukhari-5985', 'muslim-2557a'],
+    sourceIds: ['bukhari-5985', 'muslim-2557b'],
     category: 'kinship',
     published: true,
     status: 'verified',
