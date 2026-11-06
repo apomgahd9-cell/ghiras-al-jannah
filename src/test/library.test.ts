@@ -747,24 +747,48 @@ describe('Independent review corrections', () => {
     expect(d!.sourceIds).not.toContain('muslim-2558');
   });
 
-  it('muslim-2557a source has correct narrator (Abu Huraira)', () => {
+  it('muslim-2557a source has correct narrator (Anas ibn Malik)', () => {
     const s = SOURCE_MAP['muslim-2557a'];
     expect(s).toBeDefined();
-    expect(s!.narrator).toContain('أبو هريرة');
+    expect(s!.narrator).toContain('أنس بن مالك');
+    expect(s!.narrator).not.toContain('أبو هريرة');
   });
 
-  it('sadaqah-nafs uses muslim-533c not muslim-1027', () => {
-    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
-    expect(d).toBeDefined();
-    expect(d!.sourceIds).toContain('muslim-533c');
-    expect(d!.sourceIds).not.toContain('muslim-1027');
-  });
-
-  it('muslim-533c source has note explaining numbering', () => {
-    const s = SOURCE_MAP['muslim-533c'];
+  it('muslim-2557a note mentions Anas ibn Malik and 2557b', () => {
+    const s = SOURCE_MAP['muslim-2557a'];
     expect(s).toBeDefined();
     expect(s!.note).toBeDefined();
-    expect(s!.note!.length).toBeGreaterThan(10);
+    expect(s!.note).toContain('أنس بن مالك');
+    expect(s!.note).toContain('2557b');
+  });
+
+  it('sadaqah-nafs uses muslim-533a not muslim-1027 or 533c', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).toContain('muslim-533a');
+    expect(d!.sourceIds).not.toContain('muslim-1027');
+    expect(d!.sourceIds).not.toContain('muslim-533c');
+  });
+
+  it('muslim-533a source is in book of Mosques not Zuhd', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.gradingRef).toContain('المساجد');
+    expect(s!.gradingRef).not.toContain('الزهد');
+  });
+
+  it('muslim-533a note distinguishes from 533c (Zuhd book)', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('533c');
+    expect(s!.note).toContain('الزهد');
+  });
+
+  it('no dhikr references muslim-533c (wrong book, should be 533a)', () => {
+    for (const d of DHIKR_LIST) {
+      expect(d.sourceIds).not.toContain('muslim-533c');
+    }
   });
 
   it('quran-fatiha contains full surah (7 verses with Basmala)', () => {

@@ -439,7 +439,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من بنى مسجدًا يبتغي به وجه الله بنى الله له مثله في الجنة.',
     virtueType: 'established',
-    sourceIds: ['bukhari-450', 'muslim-533c'],
+    sourceIds: ['bukhari-450', 'muslim-533a'],
     category: 'paradise_deeds',
     published: true,
     status: 'verified',
