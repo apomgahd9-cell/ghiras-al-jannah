@@ -45,7 +45,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'الحمد لله تملأ الميزان، وسبحان الله والحمد لله تملآن ما بين السماوات والأرض.',
     virtueType: 'established',
-    sourceIds: ['muslim-5927'],
+    sourceIds: ['muslim-223', 'muslim-5927'],
     category: 'tasbih_tahmid',
     published: true,
     status: 'verified',
@@ -60,7 +60,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'سبحان الله والحمد لله تملآن ما بين السماوات والأرض.',
     virtueType: 'established',
-    sourceIds: ['muslim-5927'],
+    sourceIds: ['muslim-223', 'muslim-5927'],
     category: 'tasbih_tahmid',
     published: true,
     status: 'verified',
@@ -109,7 +109,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'ورد أن التسبيح والتحميد والتكبير تملأ الميزان. والتكبير من أعظم شعائر الإسلام.',
     virtueType: 'established',
-    sourceIds: ['muslim-5927'],
+    sourceIds: ['muslim-223'],
     category: 'tahlil_takbir',
     published: true,
     status: 'verified',
@@ -124,14 +124,15 @@ export const DHIKR_LIST: Dhikr[] = [
     explanation:
       'طلب المغفرة من الله مع الرجوع إليه. كان النبي ﷺ يستغفر في اليوم أكثر من سبعين مرة.',
     virtue:
-      'قال النبي ﷺ: إنه ليغان على قلبي، وإني لأستغفر الله في اليوم مائة مرة.',
+      'قال النبي ﷺ: إنه ليغان على قلبي، وإني لأستغفر الله في اليوم مائة مرة. (رواه مسلم بلفظ «أستغفر الله» دون إضافة «وأتوب إليه» في هذا الحديث؛ وصيغة «أستغفر الله وأتوب إليه» واردة في أحاديث أخرى)',
     virtueType: 'established',
-    sourceIds: ['nawawi-istighfar-100'],
+    sourceIds: ['muslim-2702'],
     category: 'istighfar_tawbah',
     recommendedCount: 100,
     countNote: 'العدد الوارد في الحديث: مائة مرة في اليوم',
     published: true,
-    status: 'verified',
+    status: 'needs_review',
+    statusNote: 'رواية مسلم 2702 تذكر استغفار النبي ﷺ مائة مرة بلفظ «أستغفر الله» دون «وأتوب إليه». صيغة الذكر المعروضة تضيف «وأتوب إليه» وهي واردة في أحاديث أخرى لكن ليست في هذا الحديث بعينه. يحتاج مراجعة لمطابقة اللفظ والفضيلة',
   },
   {
     id: 'luzum-istighfar',
@@ -139,14 +140,15 @@ export const DHIKR_LIST: Dhikr[] = [
     arabicText: 'مَنْ لَزِمَ الِاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا، وَمِنْ كُلِّ هَمٍّ فَرَجًا، وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ',
     tashkeelText: 'مَنْ لَزِمَ الِاسْتِغْفَارَ جَعَلَ اللَّهُ لَهُ مِنْ كُلِّ ضِيقٍ مَخْرَجًا، وَمِنْ كُلِّ هَمٍّ فَرَجًا، وَرَزَقَهُ مِنْ حَيْثُ لَا يَحْتَسِبُ',
     explanation:
-      'فضل لزوم الاستغفار: تفريج الهموم والضيق والرزق من حيث لا يحتسب العبد.',
+      'فضل لزوم الاستغفار: تفريج الهموم والضيق والرزق من حيث لا يحتسب العبد. حديث ضعيف.',
     virtue:
       'من لزم الاستغفار جعل الله له من كل ضيق مخرجًا، ومن كل هم فرجًا، ورزقه من حيث لا يحتسب.',
-    virtueType: 'established',
-    sourceIds: ['nawawi-luzum-istighfar'],
+    virtueType: 'weak',
+    sourceIds: ['abudawud-1518'],
     category: 'istighfar_tawbah',
-    published: true,
-    status: 'verified',
+    published: false,
+    status: 'weak',
+    statusNote: 'حديث ضعيف — ضعفه الألباني في ضعيف أبي داود. محفوظ في قاعدة البيانات لبيان درجته فقط، ولا يُعرض للمستخدم',
   },
   {
     id: 'sayyid-istighfar',
@@ -198,9 +200,10 @@ export const DHIKR_LIST: Dhikr[] = [
     sourceIds: ['tirmidhi-483'],
     category: 'salat_nabi',
     recommendedCount: 10,
-    countNote: 'عشر مرات صباحًا وعشرًا مساءً — حسنه الألباني',
-    published: true,
-    status: 'verified',
+    countNote: 'عشر مرات صباحًا وعشرًا مساءً',
+    published: false,
+    status: 'needs_review',
+    statusNote: 'مرجع الترمذي 483 يحتاج تحققًا أدق كمصدر لهذا اللفظ. السجل غير منشور لحين مراجعة مصدر مطابق',
   },
 
   // ============ أذكار الصباح ============
@@ -218,9 +221,9 @@ export const DHIKR_LIST: Dhikr[] = [
     category: 'morning',
     recommendedCount: 1,
     countNote: 'تُقرأ مرة واحدة في الصباح',
-    published: true,
+    published: false,
     status: 'needs_review',
-    statusNote: 'نص الآية ثابت في القرآن، لكن فضل قراءتها صباحًا للحفظ من الجن ورد في روايات تحتاج تخريجًا أدق',
+    statusNote: 'نص الآية ثابت في القرآن (سورة البقرة، الآية 255)، لكن فضل قراءتها صباحًا للحفظ من الجن ورد في روايات تحتاج تخريجًا أدق. لا يُنشر فضل حديثي دون مصدر مطابق تم التحقق منه',
   },
   {
     id: 'bismillah-alladhi-la-yadur-morning',
@@ -234,7 +237,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من قالها ثلاثًا حين يصبح وثلاثًا حين يمسي لم يضره شيء.',
     virtueType: 'established',
-    sourceIds: ['abudawud-5069'],
+    sourceIds: ['abudawud-5088'],
     category: 'morning',
     recommendedCount: 3,
     countNote: 'تُقال ثلاث مرات في الصباح',
@@ -257,9 +260,9 @@ export const DHIKR_LIST: Dhikr[] = [
     category: 'evening',
     recommendedCount: 1,
     countNote: 'تُقرأ مرة واحدة في المساء',
-    published: true,
+    published: false,
     status: 'needs_review',
-    statusNote: 'نص الآية ثابت في القرآن، لكن فضل قراءتها مساءً للحفظ من الجن ورد في روايات تحتاج تخريجًا أدق',
+    statusNote: 'نص الآية ثابت في القرآن (سورة البقرة، الآية 255)، لكن فضل قراءتها مساءً للحفظ من الجن ورد في روايات تحتاج تخريجًا أدق. لا يُنشر فضل حديثي دون مصدر مطابق تم التحقق منه',
   },
   {
     id: 'bismillah-alladhi-la-yadur-evening',
@@ -273,7 +276,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من قالها ثلاثًا حين يمسي لم يضره شيء.',
     virtueType: 'established',
-    sourceIds: ['abudawud-5069'],
+    sourceIds: ['abudawud-5088'],
     category: 'evening',
     recommendedCount: 3,
     countNote: 'تُقال ثلاث مرات في المساء',
@@ -301,19 +304,19 @@ export const DHIKR_LIST: Dhikr[] = [
   },
   {
     id: 'tasbih-sleep-33',
-    name: 'تسبيح النوم (33+33+34)',
+    name: 'تسبيح النوم (34+33+33)',
     arabicText:
-      'سُبْحَانَ اللَّهِ (33) - الْحَمْدُ لِلَّهِ (33) - اللَّهُ أَكْبَرُ (34)',
+      'اللَّهُ أَكْبَرُ (34) - سُبْحَانَ اللَّهِ (33) - الْحَمْدُ لِلَّهِ (33)',
     tashkeelText:
-      'سُبْحَانَ اللَّهِ (33) - الْحَمْدُ لِلَّهِ (33) - اللَّهُ أَكْبَرُ (34)',
+      'اللَّهُ أَكْبَرُ (34) - سُبْحَانَ اللَّهِ (33) - الْحَمْدُ لِلَّهِ (33)',
     explanation:
-      'تسبيح يُقال عند النوم. علمه النبي ﷺ لابنته فاطمة رضي الله عنها.',
+      'تسبيح يُقال عند النوم. علمه النبي ﷺ لابنته فاطمة رضي الله عنها. الترتيب: الله أكبر أربعًا وثلاثين، ثم سبحان الله ثلاثًا وثلاثين، ثم الحمد لله ثلاثًا وثلاثين.',
     virtue:
-      'كان النبي ﷺ إذا أوى إلى فراشه قال: سبحان الله ثلاثًا وثلاثين، والحمد لله ثلاثًا وثلاثين، والله أكبر أربعًا وثلاثين.',
+      'كان النبي ﷺ إذا أوى إلى فراشه قال: الله أكبر أربعًا وثلاثين، وسبحان الله ثلاثًا وثلاثين، والحمد لله ثلاثًا وثلاثين.',
     virtueType: 'established',
     sourceIds: ['bukhari-3705'],
     category: 'sleep',
-    countNote: '33 تسبيح + 33 تحميد + 34 تكبير = 100',
+    countNote: '34 تكبير + 33 تسبيح + 33 تحميد = 100',
     published: true,
     status: 'verified',
   },
@@ -361,10 +364,11 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من قال سبحان الله العظيم وبحمده، غُرست له نخلة في الجنة.',
     virtueType: 'established',
-    sourceIds: ['ahmad-8774'],
+    sourceIds: ['tirmidhi-3464'],
     category: 'quran',
     published: true,
     status: 'verified',
+    statusNote: 'اختلف المحدثون في درجة هذا الحديث؛ وصفه الترمذي بأنه حسن صحيح غريب. لا يدعي الجميع اتفاق العلماء على تصحيحه',
   },
 
   // ============ الصدقة والإحسان ============
@@ -378,11 +382,11 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'والصدقة تطفئ الخطيئة كما يطفئ الماء النار.',
     virtueType: 'general',
-    sourceIds: ['tirmidhi-483'],
+    sourceIds: ['tirmidhi-2616'],
     category: 'charity',
     published: false,
     status: 'needs_review',
-    statusNote: 'هذا الحديث ورد في سياق حديث أطول في الترمذي، لكن ربطه بهذا الرقم يحتاج إلى تحقق أدق. محفوظ في قاعدة البيانات لحين المراجعة.',
+    statusNote: 'المصدر الصحيح هو الترمذي 2616. محفوظ في قاعدة البيانات لحين المراجعة.',
   },
 
   // ============ بر الوالدين ============
@@ -396,11 +400,11 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'لا يصح نسبة هذا النص إلى النبي ﷺ. ضعفه الألباني في ضعيف الترمذي وقال: موضوع. ومعنى بر الوالدين ثابت في القرآن والسنة لكن هذا النص بعينه لا يصح.',
     virtueType: 'weak',
-    sourceIds: ['tirmidhi-2456'],
+    sourceIds: ['tirmidhi-1899'],
     category: 'parents',
     published: false,
     status: 'weak',
-    statusNote: 'حديث ضعيف جدًا — ضعفه الألباني في ضعيف الترمذي. محفوظ في قاعدة البيانات لبيان درجته فقط، ولا يُعرض للمستخدم.',
+    statusNote: 'حديث ضعيف — ضعفه الألباني في ضعيف الترمذي. محفوظ في قاعدة البيانات لبيان درجته فقط، ولا يُعرض للمستخدم.',
   },
 
   // ============ صلة الرحم ============

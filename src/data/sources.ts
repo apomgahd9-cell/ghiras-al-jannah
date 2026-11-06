@@ -4,6 +4,7 @@ export const SOURCES: Source[] = [
   // === القرآن الكريم ===
   {
     id: 'quran-baqarah-255',
+    sourceType: 'quran',
     bookName: 'القرآن الكريم',
     surahName: 'البقرة',
     verseNumber: '255',
@@ -13,6 +14,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'quran-raad-28',
+    sourceType: 'quran',
     bookName: 'القرآن الكريم',
     surahName: 'الرعد',
     verseNumber: '28',
@@ -22,6 +24,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'quran-ahzab-35',
+    sourceType: 'quran',
     bookName: 'القرآن الكريم',
     surahName: 'الأحزاب',
     verseNumber: '35',
@@ -31,6 +34,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'quran-baqarah-152',
+    sourceType: 'quran',
     bookName: 'القرآن الكريم',
     surahName: 'البقرة',
     verseNumber: '152',
@@ -42,6 +46,7 @@ export const SOURCES: Source[] = [
   // === صحيح البخاري ===
   {
     id: 'bukhari-6405',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6405',
     grade: 'sahih',
@@ -53,6 +58,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-6406',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6406',
     grade: 'sahih',
@@ -64,6 +70,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-6403',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6403',
     grade: 'sahih',
@@ -75,6 +82,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-6610',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6610',
     grade: 'sahih',
@@ -86,6 +94,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-6306',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6306',
     grade: 'sahih',
@@ -97,6 +106,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-6324',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '6324',
     grade: 'sahih',
@@ -108,17 +118,19 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-3705',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '3705',
     grade: 'sahih',
     scholar: 'الإمام البخاري',
     narrator: 'علي بن أبي طالب رضي الله عنه',
     hadithText:
-      'كَانَ النَّبِيُّ ﷺ إِذَا أَوَى إِلَى فِرَاشِهِ قَالَ: سُبْحَانَ اللَّهِ ثَلَاثًا وَثَلَاثِينَ، وَالْحَمْدُ لِلَّهِ ثَلَاثًا وَثَلَاثِينَ، وَاللَّهُ أَكْبَرُ أَرْبَعًا وَثَلَاثِينَ',
+      'كَانَ النَّبِيُّ ﷺ إِذَا أَوَى إِلَى فِرَاشِهِ قَالَ: اللَّهُ أَكْبَرُ أَرْبَعًا وَثَلَاثِينَ، وَسُبْحَانَ اللَّهِ ثَلَاثًا وَثَلَاثِينَ، وَالْحَمْدُ لِلَّهِ ثَلَاثًا وَثَلَاثِينَ',
     gradingRef: 'صحيح البخاري — كتاب مناقب الأنصار',
   },
   {
     id: 'bukhari-574',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '574',
     grade: 'sahih',
@@ -129,6 +141,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-4474',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '4474',
     grade: 'sahih',
@@ -140,16 +153,18 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'bukhari-450',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '450',
     grade: 'sahih',
     scholar: 'الإمام البخاري',
     narrator: 'عثمان بن عفان رضي الله عنه',
-    hadithText: 'مَنْ بَنَى مَسْجِدًا لِلَّهِ بَنَى اللَّهُ لَهُ بَيْتًا فِي الْجَنَّةِ',
+    hadithText: 'مَنْ بَنَى مَسْجِدًا لِلهِ بَنَى اللَّهُ لَهُ بَيْتًا فِي الْجَنَّةِ',
     gradingRef: 'صحيح البخاري — كتاب الصلاة',
   },
   {
     id: 'bukhari-5985',
+    sourceType: 'hadith',
     bookName: 'صحيح البخاري',
     hadithNumber: '5985',
     grade: 'sahih',
@@ -163,6 +178,7 @@ export const SOURCES: Source[] = [
   // === صحيح مسلم ===
   {
     id: 'muslim-5927',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '5927',
     grade: 'sahih',
@@ -174,6 +190,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'muslim-408',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '408',
     grade: 'sahih',
@@ -185,6 +202,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'muslim-2676',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '2676',
     grade: 'sahih',
@@ -196,6 +214,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'muslim-2558',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '2558',
     grade: 'sahih',
@@ -207,6 +226,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'muslim-1027',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '1027',
     grade: 'sahih',
@@ -218,6 +238,7 @@ export const SOURCES: Source[] = [
   },
   {
     id: 'muslim-818',
+    sourceType: 'hadith',
     bookName: 'صحيح مسلم',
     hadithNumber: '818',
     grade: 'sahih',
@@ -227,10 +248,24 @@ export const SOURCES: Source[] = [
       'مَنْ تَوَضَّأَ فَأَحْسَنَ الْوُضُوءَ ثُمَّ قَالَ: أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ... فُتِحَتْ لَهُ أَبْوَابُ الْجَنَّةِ الثَّمَانِيَةُ',
     gradingRef: 'صحيح مسلم — كتاب الطهارة',
   },
+  {
+    id: 'muslim-223',
+    sourceType: 'hadith',
+    bookName: 'صحيح مسلم',
+    hadithNumber: '223',
+    grade: 'sahih',
+    scholar: 'الإمام مسلم',
+    narrator: 'أبو مالك الأشعري رضي الله عنه',
+    hadithText:
+      'الطُّهُورُ شَطْرُ الْإِيمَانِ، وَالْحَمْدُ لِلَّهِ تَمْلَأُ الْمِيزَانَ، وَسُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ تَمْلَآنِ مَا بَيْنَ السَّمَاءِ وَالْأَرْضِ',
+    gradingRef: 'صحيح مسلم — كتاب الطهارة',
+    note: 'هذا الحديث هو نفسه مسلم 5927 في بعض الطبعات، والرقم 223 هو رقم الحديث في طبعة أخرى. الفضيلة مطابقة لذكر الحمد لله وسبحان الله والحمد لله',
+  },
 
   // === سنن أبي داود ===
   {
     id: 'abudawud-5088',
+    sourceType: 'hadith',
     bookName: 'سنن أبي داود',
     hadithNumber: '5088',
     grade: 'sahih',
@@ -241,62 +276,9 @@ export const SOURCES: Source[] = [
     gradingRef: 'صححه الألباني في صحيح أبي داود',
     note: 'الرقم الحديث: 5088. الرقم الإنجليزي القديم: 5069',
   },
-
-  // === سنن الترمذي ===
-  {
-    id: 'tirmidhi-1899',
-    bookName: 'جامع الترمذي',
-    hadithNumber: '1899',
-    grade: 'hasan',
-    scholar: 'الإمام الترمذي',
-    narrator: 'عبد الله بن عمرو رضي الله عنهما',
-    hadithText: 'رِضَا الرَّبِّ فِي رِضَا الْوَالِدَيْنِ، وَسَخَطُ الرَّبِّ فِي سَخَطِ الْوَالِدَيْنِ',
-    gradingRef: 'حسن — قال الترمذي: حسن. وصححه الألباني في صحيح الترمذي',
-    note: 'اختلف في رفعه ووقفه؛ رفعه خالد بن الحارث عن شعبة ووقفه غيره. حكم الترمذي: حسن',
-  },
-
-  // === سنن النسائي ===
-  {
-    id: 'nasai-10148',
-    bookName: 'سنن النسائي',
-    hadithNumber: '10148',
-    grade: 'sahih',
-    scholar: 'الإمام النسائي',
-    narrator: 'أبو هريرة رضي الله عنه',
-    hadithText:
-      'مَنْ قَالَ حِينَ يُصْبِحُ وَحِينَ يُمْسِي: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ مِائَةَ مَرَّةٍ، لَمْ يَأْتِ أَحَدٌ يَوْمَ الْقِيَامَةِ بِأَفْضَلَ مِمَّا جَاءَ بِهِ',
-    gradingRef: 'صححه الألباني',
-  },
-
-  // === مسند أحمد ===
-  {
-    id: 'tirmidhi-3464',
-    bookName: 'جامع الترمذي',
-    hadithNumber: '3464',
-    grade: 'hasan',
-    scholar: 'الإمام الترمذي',
-    narrator: 'جابر بن عبد الله رضي الله عنهما',
-    hadithText:
-      'مَنْ قَالَ سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ، غُرِسَتْ لَهُ نَخْلَةٌ فِي الْجَنَّةِ',
-    gradingRef: 'حسن صحيح غريب — قال الترمذي: حديث حسن صحيح غريب',
-    note: 'اختلف المحدثون في درجة هذا الحديث؛ وصفه الترمذي بأنه حسن صحيح غريب. لم يثبت رواية أحمد 8774 برواية أبي الدرداء بعد التحقق المستقل',
-  },
-
-  // === الأذكار للنووي ===
-  {
-    id: 'muslim-2702',
-    bookName: 'صحيح مسلم',
-    hadithNumber: '2702',
-    grade: 'sahih',
-    scholar: 'الإمام مسلم',
-    narrator: 'الأغر المزني رضي الله عنه',
-    hadithText:
-      'إِنَّهُ لَيُغَانُ عَلَى قَلْبِي، وَإِنِّي لَأَسْتَغْفِرُ اللَّهَ فِي الْيَوْمِ مِائَةَ مَرَّةٍ',
-    gradingRef: 'صحيح مسلم — كتاب الذكر والدعاء',
-    note: 'رواية مسلم تذكر استغفار النبي ﷺ مائة مرة بلفظ «أستغفر الله» دون ذكر صيغة «وأتوب إليه» في هذا الحديث. صيغة «أستغفر الله وأتوب إليه» واردة في أحاديث أخرى',
-  },
   {
     id: 'abudawud-1518',
+    sourceType: 'hadith',
     bookName: 'سنن أبي داود',
     hadithNumber: '1518',
     grade: 'daif',
@@ -307,9 +289,35 @@ export const SOURCES: Source[] = [
     gradingRef: 'ضعفه الألباني في ضعيف أبي داود',
   },
 
-  // === جامع الترمذي — فضل الصلاة على النبي ===
+  // === جامع الترمذي ===
+  {
+    id: 'tirmidhi-1899',
+    sourceType: 'hadith',
+    bookName: 'جامع الترمذي',
+    hadithNumber: '1899',
+    grade: 'hasan',
+    scholar: 'الإمام الترمذي',
+    narrator: 'عبد الله بن عمرو رضي الله عنهما',
+    hadithText: 'رِضَا الرَّبِّ فِي رِضَا الْوَالِدَيْنِ، وَسَخْطُ الرَّبِّ فِي سَخْطِ الْوَالِدَيْنِ',
+    gradingRef: 'حسن — قال الترمذي: حسن. وصححه الألباني في صحيح الترمذي',
+    note: 'اختلف في رفعه ووقفه؛ رفعه خالد بن الحارث عن شعبة ووقفه غيره. حكم الترمذي: حسن',
+  },
+  {
+    id: 'tirmidhi-3464',
+    sourceType: 'hadith',
+    bookName: 'جامع الترمذي',
+    hadithNumber: '3464',
+    grade: 'hasan',
+    scholar: 'الإمام الترمذي',
+    narrator: 'جابر بن عبد الله رضي الله عنهما',
+    hadithText:
+      'مَنْ قَالَ سُبْحَانَ اللَّهِ الْعَظِيمِ وَبِحَمْدِهِ، غُرِسَتْ لَهُ نَخْلَةٌ فِي الْجَنَّةِ',
+    gradingRef: 'حسن صحيح غريب — قال الترمذي: حديث حسن صحيح غريب',
+    note: 'اختلف المحدثون في درجة هذا الحديث؛ وصفه الترمذي بأنه حسن صحيح غريب. لم يثبت رواية أحمد 8774 برواية أبي الدرداء بعد التحقق المستقل',
+  },
   {
     id: 'tirmidhi-483',
+    sourceType: 'hadith',
     bookName: 'جامع الترمذي',
     hadithNumber: '483',
     grade: 'hasan',
@@ -320,10 +328,9 @@ export const SOURCES: Source[] = [
     gradingRef: 'حسنه الألباني في صحيح الترمذي',
     note: 'هذا الحديث في فضل الصلاة على النبي ﷺ. لا يُستخدم كمصدر لغيره من الأذكار',
   },
-
-  // === جامع الترمذي — فضل الصدقة ===
   {
     id: 'tirmidhi-2616',
+    sourceType: 'hadith',
     bookName: 'جامع الترمذي',
     hadithNumber: '2616',
     grade: 'hasan',
@@ -332,6 +339,35 @@ export const SOURCES: Source[] = [
     hadithText:
       'وَالصَّدَقَةُ تُطْفِئُ الْخَطِيئَةَ كَمَا يُطْفِئُ الْمَاءُ النَّارَ، وَحُسْنُ الْخُلُقِ',
     gradingRef: 'حسن — قال الترمذي: حديث حسن. وحسنه الألباني في صحيح الترمذي',
+  },
+
+  // === سنن النسائي ===
+  {
+    id: 'nasai-10148',
+    sourceType: 'hadith',
+    bookName: 'سنن النسائي',
+    hadithNumber: '10148',
+    grade: 'sahih',
+    scholar: 'الإمام النسائي',
+    narrator: 'أبو هريرة رضي الله عنه',
+    hadithText:
+      'مَنْ قَالَ حِينَ يُصْبِحُ وَحِينَ يُمْسِي: سُبْحَانَ اللَّهِ وَبِحَمْدِهِ مِائَةَ مَرَّةٍ، لَمْ يَأْتِ أَحَدٌ يَوْمَ الْقِيَامَةِ بِأَفْضَلَ مِمَّا جَاءَ بِهِ',
+    gradingRef: 'صححه الألباني',
+  },
+
+  // === صحيح مسلم — الاستغفار ===
+  {
+    id: 'muslim-2702',
+    sourceType: 'hadith',
+    bookName: 'صحيح مسلم',
+    hadithNumber: '2702',
+    grade: 'sahih',
+    scholar: 'الإمام مسلم',
+    narrator: 'الأغر المزني رضي الله عنه',
+    hadithText:
+      'إِنَّهُ لَيُغَانُ عَلَى قَلْبِي، وَإِنِّي لَأَسْتَغْفِرُ اللَّهَ فِي الْيَوْمِ مِائَةَ مَرَّةٍ',
+    gradingRef: 'صحيح مسلم — كتاب الذكر والدعاء',
+    note: 'رواية مسلم تذكر استغفار النبي ﷺ مائة مرة بلفظ «أستغفر الله» دون ذكر صيغة «وأتوب إليه» في هذا الحديث. صيغة «أستغفر الله وأتوب إليه» واردة في أحاديث أخرى',
   },
 ];
 

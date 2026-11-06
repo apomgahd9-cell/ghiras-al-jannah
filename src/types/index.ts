@@ -29,8 +29,11 @@ export type DhikrCategory =
   | 'paradise_deeds'
   | 'dhikr_general';
 
+export type SourceType = 'quran' | 'hadith';
+
 export interface Source {
   id: string;
+  sourceType: SourceType;
   bookName: string;
   hadithNumber?: string;
   verseNumber?: string;
