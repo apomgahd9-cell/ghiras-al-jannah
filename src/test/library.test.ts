@@ -420,6 +420,14 @@ describe('Publishing policy enforcement', () => {
     }
   });
 
+  it('no non-verified dhikr has published set to true', () => {
+    for (const d of DHIKR_LIST) {
+      if (d.status !== 'verified') {
+        expect(d.published).toBe(false);
+      }
+    }
+  });
+
   it('isDhikrEligibleForPublish rejects dhikr with missing sources', () => {
     const fakeDhikr: Dhikr = {
       id: 'test-missing',

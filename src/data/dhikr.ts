@@ -130,7 +130,7 @@ export const DHIKR_LIST: Dhikr[] = [
     category: 'istighfar_tawbah',
     recommendedCount: 100,
     countNote: 'العدد الوارد في الحديث: مائة مرة في اليوم',
-    published: true,
+    published: false,
     status: 'needs_review',
     statusNote: 'رواية مسلم 2702 تذكر استغفار النبي ﷺ مائة مرة بلفظ «أستغفر الله» دون «وأتوب إليه». صيغة الذكر المعروضة تضيف «وأتوب إليه» وهي واردة في أحاديث أخرى لكن ليست في هذا الحديث بعينه. يحتاج مراجعة لمطابقة اللفظ والفضيلة',
   },
