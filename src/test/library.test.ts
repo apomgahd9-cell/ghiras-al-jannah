@@ -738,3 +738,79 @@ describe('Astaghfirullah-100 needs review', () => {
     expect(shown).toBeUndefined();
   });
 });
+
+describe('Independent review corrections', () => {
+  it('rahim-tasil-rahim uses muslim-2557a not muslim-2558', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'rahim-tasil-rahim');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).toContain('muslim-2557a');
+    expect(d!.sourceIds).not.toContain('muslim-2558');
+  });
+
+  it('muslim-2557a source has correct narrator (Abu Huraira)', () => {
+    const s = SOURCE_MAP['muslim-2557a'];
+    expect(s).toBeDefined();
+    expect(s!.narrator).toContain('أبو هريرة');
+  });
+
+  it('sadaqah-nafs uses muslim-533c not muslim-1027', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).toContain('muslim-533c');
+    expect(d!.sourceIds).not.toContain('muslim-1027');
+  });
+
+  it('muslim-533c source has note explaining numbering', () => {
+    const s = SOURCE_MAP['muslim-533c'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note!.length).toBeGreaterThan(10);
+  });
+
+  it('quran-fatiha contains full surah (7 verses with Basmala)', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'quran-fatiha');
+    expect(d).toBeDefined();
+    expect(d!.arabicText).toContain('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ');
+    expect(d!.arabicText).toContain('الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ');
+    expect(d!.arabicText).toContain('مَالِكِ يَوْمِ الدِّينِ');
+    expect(d!.arabicText).toContain('إِيَّاكَ نَعْبُدُ');
+    expect(d!.arabicText).toContain('الصِّرَاطَ الْمُسْتَقِيمَ');
+    expect(d!.arabicText).toContain('وَلَا الضَّالِّينَ');
+  });
+
+  it('bukhari-6610 gradingRef says كتاب القدر not الجهاد', () => {
+    const s = SOURCE_MAP['bukhari-6610'];
+    expect(s).toBeDefined();
+    expect(s!.gradingRef).toContain('القدر');
+    expect(s!.gradingRef).not.toContain('الجهاد');
+  });
+
+  it('bukhari-3705 gradingRef says فضائل أصحاب النبي not مناقب الأنصار', () => {
+    const s = SOURCE_MAP['bukhari-3705'];
+    expect(s).toBeDefined();
+    expect(s!.gradingRef).toContain('فضائل أصحاب النبي');
+    expect(s!.gradingRef).not.toContain('مناقب الأنصار');
+  });
+
+  it('muslim-223 is not used as a source by any published dhikr', () => {
+    for (const d of getAllDhikr()) {
+      expect(d.sourceIds).not.toContain('muslim-223');
+    }
+  });
+
+  it('muslim-223 note clarifies it is a duplicate of muslim-5927', () => {
+    const s = SOURCE_MAP['muslim-223'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('5927');
+  });
+
+  it('muslim-408 note clarifies virtue vs formula distinction', () => {
+    const s = SOURCE_MAP['muslim-408'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note!.length).toBeGreaterThan(10);
+    expect(s!.note).toContain('فضل');
+    expect(s!.note).toContain('الصيغة');
+  });
+});

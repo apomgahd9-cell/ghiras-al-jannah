@@ -45,7 +45,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'الحمد لله تملأ الميزان، وسبحان الله والحمد لله تملآن ما بين السماوات والأرض.',
     virtueType: 'established',
-    sourceIds: ['muslim-223', 'muslim-5927'],
+    sourceIds: ['muslim-5927'],
     category: 'tasbih_tahmid',
     published: true,
     status: 'verified',
@@ -60,7 +60,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'سبحان الله والحمد لله تملآن ما بين السماوات والأرض.',
     virtueType: 'established',
-    sourceIds: ['muslim-223', 'muslim-5927'],
+    sourceIds: ['muslim-5927'],
     category: 'tasbih_tahmid',
     published: true,
     status: 'verified',
@@ -343,8 +343,10 @@ export const DHIKR_LIST: Dhikr[] = [
   {
     id: 'quran-fatiha',
     name: 'سورة الفاتحة',
-    arabicText: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
-    tashkeelText: 'الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ',
+    arabicText:
+      'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾',
+    tashkeelText:
+      'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ﴿١﴾ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ﴿٢﴾ الرَّحْمَٰنِ الرَّحِيمِ ﴿٣﴾ مَالِكِ يَوْمِ الدِّينِ ﴿٤﴾ إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ ﴿٥﴾ اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ ﴿٦﴾ صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ﴿٧﴾',
     explanation:
       'سورة الفاتحة: أم الكتاب وأعظم سورة في القرآن. هي السبع المثاني.',
     virtue:
@@ -420,7 +422,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من أحب أن يُبسط له في رزقه وأن يُنسأ له في أثره فليصل رحمه.',
     virtueType: 'established',
-    sourceIds: ['bukhari-5985', 'muslim-2558'],
+    sourceIds: ['bukhari-5985', 'muslim-2557a'],
     category: 'kinship',
     published: true,
     status: 'verified',
@@ -437,7 +439,7 @@ export const DHIKR_LIST: Dhikr[] = [
     virtue:
       'من بنى مسجدًا يبتغي به وجه الله بنى الله له مثله في الجنة.',
     virtueType: 'established',
-    sourceIds: ['bukhari-450', 'muslim-1027'],
+    sourceIds: ['bukhari-450', 'muslim-533c'],
     category: 'paradise_deeds',
     published: true,
     status: 'verified',
