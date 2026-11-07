@@ -1173,6 +1173,95 @@ describe('sadaqah-nafs narration variants', () => {
     expect(d!.name).toContain('مثله في الجنة');
     expect(d!.name).not.toContain('بيتًا في الجنة');
   });
+
+  it('sadaqah-nafs explanation does NOT claim muslim has phrase without doubt', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).not.toContain('مباشرة دون شك');
+    expect(d!.explanation).not.toContain('بالعبارة مباشرة');
+  });
+
+  it('sadaqah-nafs explanation mentions bakir doubt in both bukhari and muslim', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('بكير');
+    expect(d!.explanation).toContain('450');
+    expect(d!.explanation).toContain('533a');
+  });
+
+  it('sadaqah-nafs explanation attributes «mithlahu» to Ibn Isa narration', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('ابن عيسى');
+    expect(d!.explanation).toContain('مثله في الجنة');
+  });
+
+  it('sadaqah-nafs explanation states displayed text is Ibn Isa wording choice', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('اختيار');
+    expect(d!.explanation).toContain('اللفظ الوحيد');
+  });
+
+  it('sadaqah-nafs explanation mentions «baytan» as majority narration in muslim', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('بيتًا في الجنة');
+    expect(d!.explanation).toContain('الأكثر');
+  });
+
+  it('muslim-533a hadithText mentions bakir doubt (hasibtu)', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('حَسِبْتُ');
+    expect(s!.hadithText).toContain('بُكَيْرٌ');
+  });
+
+  it('muslim-533a hadithText contains both «baytan» and «mithlahu» variants', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('بَيْتًا فِي الْجَنَّةِ');
+    expect(s!.hadithText).toContain('مِثْلَهُ فِي الْجَنَّةِ');
+  });
+
+  it('muslim-533a hadithText attributes «mithlahu» to Ibn Isa', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('ابْنِ عِيسَى');
+  });
+
+  it('muslim-533a note does NOT claim phrase without doubt', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).not.toContain('تذكر العبارة مباشرة دون شك');
+    expect(s!.note).not.toContain('بالعبارة مباشرة');
+    expect(s!.note).not.toContain('تذكر عبارة «يبتغي به وجه الله» مباشرة');
+  });
+
+  it('muslim-533a note mentions bakir doubt is present in muslim too', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('بكير');
+    expect(s!.note).toContain('مسلم');
+  });
+
+  it('muslim-533a note mentions Ibn Isa as source of «mithlahu» variant', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('ابن عيسى');
+    expect(s!.note).toContain('مثله في الجنة');
+  });
+
+  it('muslim-533a note mentions internal variant between baytan and mithlahu', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('بيتًا في الجنة');
+    expect(s!.note).toContain('مثله في الجنة');
+  });
 });
 
 describe('tirmidhi-3464 disputed grading', () => {
