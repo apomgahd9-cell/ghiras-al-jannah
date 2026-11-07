@@ -1027,3 +1027,108 @@ describe('salat-nabi-10 source roles', () => {
     expect(sourceNorm).not.toContain('عشر');
   });
 });
+
+describe('subhan-allah-azim-100 single-phrase virtue guard', () => {
+  it('virtueType is general not established', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-100');
+    expect(d).toBeDefined();
+    expect(d!.virtueType).toBe('general');
+  });
+
+  it('virtue mentions both phrases together, not one alone', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-100');
+    expect(d).toBeDefined();
+    expect(d!.virtue).toContain('سبحان الله العظيم');
+    expect(d!.virtue).toContain('سبحان الله وبحمده');
+    expect(d!.virtue).toContain('معًا');
+  });
+
+  it('explanation clarifies bukhari-6406 establishes both phrases not one alone', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-100');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('6406');
+    expect(d!.explanation).toContain('معًا');
+    expect(d!.explanation).toContain('منفردة');
+  });
+});
+
+describe('alhamdulillah-kathira virtue restriction', () => {
+  it('virtue is restricted to filling the scale only', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'alhamdulillah-kathira');
+    expect(d).toBeDefined();
+    expect(d!.virtue).toContain('تملأ الميزان');
+  });
+
+  it('virtue does not include the two-phrase filling virtue', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'alhamdulillah-kathira');
+    expect(d).toBeDefined();
+    expect(d!.virtue).not.toContain('تملآن');
+    expect(d!.virtue).not.toContain('السماوات والأرض');
+  });
+
+  it('subhan-allah-walhamdulillah retains the two-phrase filling virtue', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-walhamdulillah');
+    expect(d).toBeDefined();
+    expect(d!.virtue).toContain('تملآن');
+    expect(d!.virtue).toContain('السماوات والأرض');
+  });
+});
+
+describe('sadaqah-nafs narration variants', () => {
+  it('explanation mentions both bukhari-450 and muslim-533a with variant wordings', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('450');
+    expect(d!.explanation).toContain('533a');
+    expect(d!.explanation).toContain('اختلاف');
+  });
+
+  it('explanation does not claim verbatim match between narrations', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.explanation).toContain('تطابق');
+    expect(d!.explanation).toContain('لا');
+  });
+
+  it('bukhari-450 note mentions narrator doubt (hasibtu)', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('حَسِبْتُ');
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('شك الراوي');
+  });
+
+  it('bukhari-450 note clarifies difference from muslim-533a', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('533a');
+    expect(s!.note).toContain('تطابق');
+  });
+
+  it('muslim-533a note mentions variant wordings including yabtaghi bihi', () => {
+    const s = SOURCE_MAP['muslim-533a'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('يبتغي به وجه الله');
+    expect(s!.note).toContain('اختلاف');
+  });
+});
+
+describe('tirmidhi-3464 disputed grading', () => {
+  it('source note mentions both Tirmidhi hasan-sahih and Dar al-Salam weak', () => {
+    const s = SOURCE_MAP['tirmidhi-3464'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('حسن صحيح غريب');
+    expect(s!.note).toContain('دار السلام');
+    expect(s!.note).toContain('ضعيف');
+  });
+
+  it('associated dhikr remains unpublished', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'subhan-allah-azim-jannah');
+    expect(d).toBeDefined();
+    expect(d!.published).toBe(false);
+    expect(d!.status).toBe('disputed');
+  });
+});
