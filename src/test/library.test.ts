@@ -688,16 +688,21 @@ describe('Source-dhikr text alignment', () => {
       .filter((w) => w.length >= minLen && !STOP_WORDS.has(w));
   }
 
-  it('no published dhikr has a hadith source whose text shares zero significant words with the dhikr virtue', () => {
+  it('every hadith source shares significant words with the dhikr virtue OR the dhikr arabicText', () => {
+    // A source may establish the formula/text of the dhikr OR its virtue.
+    // Requiring every source to match the virtue is wrong when one source
+    // documents the wording and another documents the merit.
     for (const d of getAllDhikr()) {
       const hadithSources = getSourcesForDhikr(d).filter(
         (s) => s.sourceType === 'hadith' && s.hadithText
       );
       if (hadithSources.length === 0) continue;
       const virtueWords = significantWords(d.virtue, 3);
+      const textWords = significantWords(d.arabicText, 3);
+      const relevanceWords = [...new Set([...virtueWords, ...textWords])];
       for (const source of hadithSources) {
         const sourceNorm = normalizeArabic(source.hadithText!);
-        const shared = virtueWords.filter((w) => sourceNorm.includes(w));
+        const shared = relevanceWords.filter((w) => sourceNorm.includes(w));
         expect(shared.length).toBeGreaterThan(0);
       }
     }
@@ -971,5 +976,54 @@ describe('Independent review corrections', () => {
     expect(azimIdx).toBeGreaterThan(-1);
     expect(bihamdihIdx).toBeGreaterThan(-1);
     expect(azimIdx).toBeLessThan(bihamdihIdx);
+  });
+});
+
+describe('salat-nabi-10 source roles', () => {
+  const STOP_WORDS = new Set([
+    'الله', 'اللهم', 'الذي', 'التي', 'الذين', 'على', 'عليه', 'عليها',
+    'من', 'في', 'إلا', 'إن', 'أن', 'هو', 'هي', 'قال', 'قيل', 'ما', 'لا',
+    'إلى', 'عن', 'مع', 'هذا', 'هذه', 'ذلك', 'الذي', 'كان', 'كانت',
+  ]);
+
+  function normalizeArabic(text: string): string {
+    return text
+      .replace(/[\u064B-\u065F\u0670\u0640]/g, '')
+      .replace(/[^\u0621-\u064A\s]/g, ' ');
+  }
+
+  function significantWords(text: string, minLen: number): string[] {
+    return normalizeArabic(text)
+      .split(/\s+/)
+      .filter((w) => w.length >= minLen && !STOP_WORDS.has(w));
+  }
+
+  it('bukhari-3370 shares significant words with the dhikr arabicText (formula source)', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'salat-nabi-10');
+    const s = SOURCE_MAP['bukhari-3370'];
+    expect(d).toBeDefined();
+    expect(s).toBeDefined();
+    const textWords = significantWords(d!.arabicText, 3);
+    const sourceNorm = normalizeArabic(s!.hadithText!);
+    const shared = textWords.filter((w) => sourceNorm.includes(w));
+    expect(shared.length).toBeGreaterThan(0);
+  });
+
+  it('muslim-408 shares significant words with the dhikr virtue (merit source)', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'salat-nabi-10');
+    const s = SOURCE_MAP['muslim-408'];
+    expect(d).toBeDefined();
+    expect(s).toBeDefined();
+    const virtueWords = significantWords(d!.virtue, 3);
+    const sourceNorm = normalizeArabic(s!.hadithText!);
+    const shared = virtueWords.filter((w) => sourceNorm.includes(w));
+    expect(shared.length).toBeGreaterThan(0);
+  });
+
+  it('bukhari-3370 does not mention the ten-prayers virtue', () => {
+    const s = SOURCE_MAP['bukhari-3370'];
+    expect(s).toBeDefined();
+    const sourceNorm = normalizeArabic(s!.hadithText!);
+    expect(sourceNorm).not.toContain('عشر');
   });
 });
