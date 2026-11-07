@@ -1113,6 +1113,66 @@ describe('sadaqah-nafs narration variants', () => {
     expect(s!.note).toContain('يبتغي به وجه الله');
     expect(s!.note).toContain('اختلاف');
   });
+
+  it('bukhari-450 hadithText has hasibtu after «man bana masjidan» (correct position)', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    const ht = s!.hadithText!;
+    const masjidIdx = ht.indexOf('مَسْجِدًا');
+    const hasibtuIdx = ht.indexOf('حَسِبْتُ');
+    expect(masjidIdx).toBeGreaterThan(-1);
+    expect(hasibtuIdx).toBeGreaterThan(-1);
+    expect(hasibtuIdx).toBeGreaterThan(masjidIdx);
+  });
+
+  it('bukhari-450 hadithText has yabtaghi bihi wajh Allah after hasibtu', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    const ht = s!.hadithText!;
+    const hasibtuIdx = ht.indexOf('حَسِبْتُ');
+    const yabtaghiIdx = ht.indexOf('يَبْتَغِي بِهِ وَجْهَ اللَّهِ');
+    expect(hasibtuIdx).toBeGreaterThan(-1);
+    expect(yabtaghiIdx).toBeGreaterThan(-1);
+    expect(yabtaghiIdx).toBeGreaterThan(hasibtuIdx);
+  });
+
+  it('bukhari-450 hadithText contains «mithlahu fi al-jannah»', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('مِثْلَهُ فِي الْجَنَّةِ');
+  });
+
+  it('bukhari-450 hadithText does NOT contain «baytan fi al-jannah»', () => {
+    const s = SOURCE_MAP['bukhari-450'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).not.toContain('بَيْتًا فِي الْجَنَّةِ');
+  });
+
+  it('sadaqah-nafs arabicText contains «mithlahu fi al-jannah»', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.arabicText).toContain('مِثْلَهُ فِي الْجَنَّةِ');
+  });
+
+  it('sadaqah-nafs arabicText does NOT contain «baytan fi al-jannah»', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.arabicText).not.toContain('بَيْتًا فِي الْجَنَّةِ');
+  });
+
+  it('sadaqah-nafs does NOT contain old composite wording', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.arabicText).not.toContain('لِلَّهِ بَنَى اللَّهُ لَهُ بَيْتًا');
+    expect(d!.virtue).not.toContain('بيتًا في الجنة');
+  });
+
+  it('sadaqah-nafs name reflects corrected wording', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-nafs');
+    expect(d).toBeDefined();
+    expect(d!.name).toContain('مثله في الجنة');
+    expect(d!.name).not.toContain('بيتًا في الجنة');
+  });
 });
 
 describe('tirmidhi-3464 disputed grading', () => {
