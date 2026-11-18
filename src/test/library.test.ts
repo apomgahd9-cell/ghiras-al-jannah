@@ -815,7 +815,7 @@ describe('Independent review corrections', () => {
     const d = DHIKR_LIST.find((x) => x.id === 'quran-fatiha');
     expect(d).toBeDefined();
     expect(d!.arabicText).toContain('بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ');
-    expect(d!.arabicText).toContain('الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ');
+    expect(d!.arabicText).toContain('الْحَمْدُ لِلَّهِ رَبِّ الْعَالِمِينَ');
     expect(d!.arabicText).toContain('مَالِكِ يَوْمِ الدِّينِ');
     expect(d!.arabicText).toContain('إِيَّاكَ نَعْبُدُ');
     expect(d!.arabicText).toContain('الصِّرَاطَ الْمُسْتَقِيمَ');
@@ -1125,7 +1125,7 @@ describe('sadaqah-nafs narration variants', () => {
     expect(hasibtuIdx).toBeGreaterThan(masjidIdx);
   });
 
-  it('bukhari-450 hadithText has yabtaghi bihi wajh Allah after hasibtu', () => {
+  it('bukhari-450 hadithText has yabtaggi bihi wajh Allah after hasibtu', () => {
     const s = SOURCE_MAP['bukhari-450'];
     expect(s).toBeDefined();
     const ht = s!.hadithText!;
@@ -1279,5 +1279,249 @@ describe('tirmidhi-3464 disputed grading', () => {
     expect(d).toBeDefined();
     expect(d!.published).toBe(false);
     expect(d!.status).toBe('disputed');
+  });
+});
+
+// ============ Final review corrections ============
+
+describe('tirmidhi-483 corrected to Kaab ibn Ujrah Ibrahimiyah', () => {
+  it('tirmidhi-483 narrator is Kaab ibn Ujrah not Abu Huraira', () => {
+    const s = SOURCE_MAP['tirmidhi-483'];
+    expect(s).toBeDefined();
+    expect(s!.narrator).toContain('كعب بن عجرة');
+    expect(s!.narrator).not.toContain('أبو هريرة');
+  });
+
+  it('tirmidhi-483 hadithText is the Ibrahimiyah formula not 10-prayers text', () => {
+    const s = SOURCE_MAP['tirmidhi-483'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ');
+    expect(s!.hadithText).toContain('إِبْرَاهِيمَ');
+    expect(s!.hadithText).not.toContain('عشرًا');
+  });
+
+  it('tirmidhi-483 note clarifies it is not the 10-prayers source', () => {
+    const s = SOURCE_MAP['tirmidhi-483'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('كعب بن عجرة');
+    expect(s!.note).toContain('الإبراهيمية');
+  });
+
+  it('salat-nabi-10-morning-evening no longer references tirmidhi-483', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'salat-nabi-10-morning-evening');
+    expect(d).toBeDefined();
+    expect(d!.sourceIds).not.toContain('tirmidhi-483');
+    expect(d!.sourceIds.length).toBe(0);
+  });
+});
+
+describe('tirmidhi-2616 corrected grading and text', () => {
+  it('tirmidhi-2616 gradingRef is hasan sahih not just hasan', () => {
+    const s = SOURCE_MAP['tirmidhi-2616'];
+    expect(s).toBeDefined();
+    expect(s!.gradingRef).toContain('حسن صحيح');
+  });
+
+  it('tirmidhi-2616 hadithText contains Muadh hadith excerpt', () => {
+    const s = SOURCE_MAP['tirmidhi-2616'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('الصَّدَقَةُ تُطْفِئُ الْخَطِيئَةَ');
+    expect(s!.hadithText).toContain('الْمَاءُ النَّارَ');
+  });
+
+  it('tirmidhi-2616 note mentions it is an excerpt', () => {
+    const s = SOURCE_MAP['tirmidhi-2616'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('مقتطف');
+  });
+
+  it('sadaqah-tutfi is now published and verified', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'sadaqah-tutfi');
+    expect(d).toBeDefined();
+    expect(d!.published).toBe(true);
+    expect(d!.status).toBe('verified');
+    expect(d!.sourceIds).toContain('tirmidhi-2616');
+  });
+
+  it('sadaqah-tutfi is shown to user', () => {
+    const shown = getAllDhikr().find((x) => x.id === 'sadaqah-tutfi');
+    expect(shown).toBeDefined();
+  });
+});
+
+describe('tirmidhi-1899 corrected text and grading', () => {
+  it('tirmidhi-1899 hadithText uses singular al-walid not plural al-walidayn', () => {
+    const s = SOURCE_MAP['tirmidhi-1899'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('الْوَالِدِ');
+    expect(s!.hadithText).not.toContain('الْوَالِدَيْنِ');
+  });
+
+  it('tirmidhi-1899 gradingRef does not claim Al-Albani authenticated', () => {
+    const s = SOURCE_MAP['tirmidhi-1899'];
+    expect(s).toBeDefined();
+    expect(s!.gradingRef).toContain('حسن');
+    expect(s!.gradingRef).not.toContain('صححه الألباني');
+  });
+
+  it('tirmidhi-1899 note documents Al-Albani reconsideration', () => {
+    const s = SOURCE_MAP['tirmidhi-1899'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('تراجع');
+  });
+
+  it('birr-parents-rida status is needs_review not weak', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'birr-parents-rida');
+    expect(d).toBeDefined();
+    expect(d!.status).toBe('needs_review');
+    expect(d!.status).not.toBe('weak');
+    expect(d!.published).toBe(false);
+  });
+
+  it('birr-parents-rida arabicText uses singular al-walid', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'birr-parents-rida');
+    expect(d).toBeDefined();
+    expect(d!.arabicText).toContain('الْوَالِدِ');
+    expect(d!.arabicText).not.toContain('الْوَالِدَيْنِ');
+  });
+
+  it('birr-parents-rida virtue does not claim mawdu', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'birr-parents-rida');
+    expect(d).toBeDefined();
+    expect(d!.virtue).not.toContain('موضوع');
+    expect(d!.statusNote).not.toContain('موضوع');
+  });
+
+  it('birr-parents-rida is not shown to user', () => {
+    const shown = getAllDhikr().find((x) => x.id === 'birr-parents-rida');
+    expect(shown).toBeUndefined();
+  });
+});
+
+describe('muslim-2702 corrected hadith text', () => {
+  it('muslim-2702 hadithText uses atubu not astaghfirullah', () => {
+    const s = SOURCE_MAP['muslim-2702'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('تُوبُوا');
+    expect(s!.hadithText).toContain('أَتُوبُ');
+    expect(s!.hadithText).not.toContain('أَسْتَغْفِرُ');
+  });
+
+  it('muslim-2702 note explains the actual wording', () => {
+    const s = SOURCE_MAP['muslim-2702'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('أتوب');
+    expect(s!.note).toContain('لا');
+  });
+
+  it('astaghfirullah-100 virtue matches corrected muslim-2702 text', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'astaghfirullah-100');
+    expect(d).toBeDefined();
+    expect(d!.virtue).toContain('توبوا');
+    expect(d!.virtue).toContain('أتوب');
+    expect(d!.virtue).not.toContain('ليغان');
+  });
+
+  it('astaghfirullah-100 remains needs_review and unpublished', () => {
+    const d = DHIKR_LIST.find((x) => x.id === 'astaghfirullah-100');
+    expect(d).toBeDefined();
+    expect(d!.status).toBe('needs_review');
+    expect(d!.published).toBe(false);
+  });
+});
+
+describe('muslim-5927 and muslim-223 plural samawat variant', () => {
+  it('muslim-5927 hadithText uses plural al-samawat', () => {
+    const s = SOURCE_MAP['muslim-5927'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('السَّمَاوَاتِ');
+  });
+
+  it('muslim-223 hadithText uses plural al-samawat to match 5927', () => {
+    const s = SOURCE_MAP['muslim-223'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('السَّمَاوَاتِ');
+  });
+
+  it('muslim-5927 note documents variant between singular and plural', () => {
+    const s = SOURCE_MAP['muslim-5927'];
+    expect(s).toBeDefined();
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('السماوات');
+  });
+});
+
+describe('Quran sources completed full verse texts', () => {
+  it('quran-baqarah-255 has full Ayat al-Kursi without truncation', () => {
+    const s = SOURCE_MAP['quran-baqarah-255'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('الْعَلِيُّ الْعَظِيمُ');
+    expect(s!.hadithText).not.toContain('...');
+  });
+
+  it('quran-raad-28 has full verse', () => {
+    const s = SOURCE_MAP['quran-raad-28'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('تَطْمَئِنُّ الْقُلُوبُ');
+  });
+
+  it('quran-ahzab-35 has full verse with excerpt note', () => {
+    const s = SOURCE_MAP['quran-ahzab-35'];
+    expect(s).toBeDefined();
+    expect(s!.hadithText).toContain('أَعَدَّ اللَّهُ لَهُمْ مَغْفِرَةً');
+    expect(s!.note).toBeDefined();
+    expect(s!.note).toContain('مقتطف');
+  });
+});
+
+describe('Grade and status consistency', () => {
+  it('no published dhikr references a source with needs_review grade', () => {
+    for (const d of getAllDhikr()) {
+      for (const sid of d.sourceIds) {
+        const source = SOURCE_MAP[sid];
+        if (source) {
+          expect(source.grade).not.toBe('needs_review');
+        }
+      }
+    }
+  });
+
+  it('no dhikr with status weak has published true', () => {
+    for (const d of DHIKR_LIST) {
+      if (d.status === 'weak') {
+        expect(d.published).toBe(false);
+      }
+    }
+  });
+
+  it('no dhikr with status needs_review has published true', () => {
+    for (const d of DHIKR_LIST) {
+      if (d.status === 'needs_review') {
+        expect(d.published).toBe(false);
+      }
+    }
+  });
+
+  it('no dhikr with status disputed has published true', () => {
+    for (const d of DHIKR_LIST) {
+      if (d.status === 'disputed') {
+        expect(d.published).toBe(false);
+      }
+    }
+  });
+
+  it('every published dhikr has status verified and at least one sahih or hasan source', () => {
+    for (const d of getAllDhikr()) {
+      expect(d.status).toBe('verified');
+      const sources = getSourcesForDhikr(d);
+      const hasValidGrade = sources.some(
+        (s) => s.grade === 'sahih' || s.grade === 'hasan'
+      );
+      expect(hasValidGrade).toBe(true);
+    }
   });
 });
